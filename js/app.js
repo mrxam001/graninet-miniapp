@@ -4,8 +4,8 @@
    ============================================ */
 
 // === Configuration ===
-// API server — HTTPS via nginx reverse proxy
-const API_BASE = 'https://85.192.60.192:8443';
+// API server — HTTP direct (Telegram WebView allows mixed content)
+const API_BASE = 'http://85.192.60.192:8080';
 
 // === Telegram WebApp ===
 const tg = window.Telegram?.WebApp;
