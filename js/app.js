@@ -4,8 +4,8 @@
    ============================================ */
 
 // === Configuration ===
-// API server on VPN host — using HTTP (will need HTTPS proxy for production)
-const API_BASE = 'http://85.192.60.192:8080';
+// API server — HTTPS via nginx reverse proxy
+const API_BASE = 'https://85.192.60.192:8443';
 
 // === Telegram WebApp ===
 const tg = window.Telegram?.WebApp;
