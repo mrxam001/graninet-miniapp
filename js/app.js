@@ -137,7 +137,7 @@ function updateUI(user) {
         statusDot.className = 'status-dot active';
         statusText.textContent = 'Активен';
 
-        heroIcon.textContent = '✅';
+        heroIcon.innerHTML = '<i data-lucide="shield-check" class="icon-hero"></i>'; if(typeof lucide!=='undefined') lucide.createIcons({nodes:[heroIcon]});
         heroTitle.textContent = 'VPN активен!';
         heroSubtitle.textContent = `Тариф: ${user.tariff_name}`;
 
@@ -211,7 +211,7 @@ function updateUI(user) {
         statusDot.className = 'status-dot expired';
         statusText.textContent = 'Истекла';
 
-        heroIcon.textContent = '⏰';
+        heroIcon.innerHTML = '<i data-lucide="clock" class="icon-hero"></i>'; if(typeof lucide!=='undefined') lucide.createIcons({nodes:[heroIcon]});
         heroTitle.textContent = 'Подписка истекла';
         heroSubtitle.textContent = 'Продли, чтобы продолжить';
 
@@ -242,7 +242,7 @@ function updateUI(user) {
         statusDot.className = 'status-dot';
         statusText.textContent = 'Не подключен';
 
-        heroIcon.textContent = '🛡';
+        heroIcon.innerHTML = '<i data-lucide="shield" class="icon-hero"></i>'; if(typeof lucide!=='undefined') lucide.createIcons({nodes:[heroIcon]});
         heroTitle.textContent = 'Добро пожаловать!';
         heroSubtitle.textContent = 'Быстрый и безопасный VPN';
 

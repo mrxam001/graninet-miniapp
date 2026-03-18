@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -17,7 +18,7 @@
     <div id="loader" class="loader">
         <div class="loader-content">
             <div class="loader-logo">
-                <div class="shield-icon">🛡</div>
+                <div class="shield-icon"><i data-lucide="shield-check" class="icon-xl"></i></div>
             </div>
             <div class="loader-text">ГРАНИ.НЕТ</div>
             <div class="loader-bar"><div class="loader-bar-fill"></div></div>
@@ -29,7 +30,7 @@
         <!-- Header -->
         <header class="header" id="header">
             <div class="header-left">
-                <div class="logo-mini">🛡</div>
+                <div class="logo-mini"><i data-lucide="shield" class="icon-sm"></i></div>
                 <span class="header-title">ГРАНИ.НЕТ</span>
             </div>
             <div class="header-right">
@@ -53,7 +54,7 @@
                             <div class="orb orb-3"></div>
                         </div>
                         <div class="hero-content">
-                            <div class="hero-icon" id="heroIcon">🛡</div>
+                            <div class="hero-icon" id="heroIcon"><i data-lucide="shield-check" class="icon-hero"></i></div>
                             <h1 class="hero-title" id="heroTitle">Добро пожаловать!</h1>
                             <p class="hero-subtitle" id="heroSubtitle">Быстрый и безопасный VPN</p>
                         </div>
@@ -63,19 +64,19 @@
                     <div class="section-title">Быстрые действия</div>
                     <div class="quick-actions">
                         <button class="action-card" id="btnCopyKey" style="display:none;">
-                            <div class="action-icon">🔑</div>
+                            <div class="action-icon"><i data-lucide="key-round"></i></div>
                             <div class="action-label">Копировать ключ</div>
                         </button>
                         <button class="action-card" id="btnCopySub" style="display:none;">
-                            <div class="action-icon">🔄</div>
+                            <div class="action-icon"><i data-lucide="refresh-cw"></i></div>
                             <div class="action-label">Подписка</div>
                         </button>
                         <button class="action-card" onclick="navigateTo('tariffs')">
-                            <div class="action-icon">💎</div>
+                            <div class="action-icon"><i data-lucide="gem"></i></div>
                             <div class="action-label">Тарифы</div>
                         </button>
                         <button class="action-card" onclick="navigateTo('setup')">
-                            <div class="action-icon">📖</div>
+                            <div class="action-icon"><i data-lucide="book-open"></i></div>
                             <div class="action-label">Инструкция</div>
                         </button>
                     </div>
@@ -84,24 +85,24 @@
                     <div class="section-title" id="subInfoTitle" style="display:none;">Моя подписка</div>
                     <div class="info-card glass" id="subInfoCard" style="display:none;">
                         <div class="info-row">
-                            <span class="info-label">📊 Тариф</span>
+                            <span class="info-label"><i data-lucide="tag" class="icon-inline"></i> Тариф</span>
                             <span class="info-value" id="infoTariff">—</span>
                         </div>
                         <div class="info-divider"></div>
                         <div class="info-row">
-                            <span class="info-label">⏰ Действует до</span>
+                            <span class="info-label"><i data-lucide="clock" class="icon-inline"></i> Действует до</span>
                             <span class="info-value" id="infoExpires">—</span>
                         </div>
                         <div class="info-divider"></div>
                         <div class="info-row">
-                            <span class="info-label">📱 Устройства</span>
+                            <span class="info-label"><i data-lucide="smartphone" class="icon-inline"></i> Устройства</span>
                             <span class="info-value" id="infoDevices">—</span>
                         </div>
                     </div>
 
                     <!-- No Subscription CTA -->
                     <div class="cta-card" id="ctaConnect">
-                        <div class="cta-icon">🚀</div>
+                        <div class="cta-icon"><i data-lucide="rocket" class="icon-lg"></i></div>
                         <h3 class="cta-title">Подключи VPN</h3>
                         <p class="cta-text">Попробуй бесплатно 3 дня! Безлимитный трафик, максимальная скорость.</p>
                         <button class="btn btn-primary btn-glow" onclick="navigateTo('tariffs')">
@@ -113,17 +114,17 @@
                     <div class="section-title" id="trafficTitle" style="display:none;">Трафик</div>
                     <div class="stats-grid" id="statsGrid" style="display:none;">
                         <div class="stat-card">
-                            <div class="stat-icon">⬆️</div>
+                            <div class="stat-icon"><i data-lucide="arrow-up-circle"></i></div>
                             <div class="stat-value" id="statUpload">0 Б</div>
                             <div class="stat-label">Отправлено</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-icon">⬇️</div>
+                            <div class="stat-icon"><i data-lucide="arrow-down-circle"></i></div>
                             <div class="stat-value" id="statDownload">0 Б</div>
                             <div class="stat-label">Получено</div>
                         </div>
                         <div class="stat-card full-width">
-                            <div class="stat-icon">📊</div>
+                            <div class="stat-icon"><i data-lucide="bar-chart-3"></i></div>
                             <div class="stat-value" id="statTotal">0 Б</div>
                             <div class="stat-label">Всего</div>
                         </div>
@@ -135,7 +136,7 @@
             <section class="page" id="page-tariffs">
                 <div class="page-scroll">
                     <div class="page-header">
-                        <h2 class="page-title">💎 Тарифы</h2>
+                        <h2 class="page-title"><i data-lucide="gem" class="icon-inline"></i> Тарифы</h2>
                         <p class="page-description">Выбери подходящий план</p>
                     </div>
 
@@ -143,16 +144,16 @@
                     <div class="tariff-card trial" id="trialCard">
                         <div class="tariff-badge">БЕСПЛАТНО</div>
                         <div class="tariff-header">
-                            <div class="tariff-icon">🎁</div>
+                            <div class="tariff-icon"><i data-lucide="gift"></i></div>
                             <div>
                                 <div class="tariff-name">Пробный</div>
                                 <div class="tariff-period">3 дня</div>
                             </div>
                         </div>
                         <ul class="tariff-features">
-                            <li>✓ Полный доступ</li>
-                            <li>✓ До 2 устройств</li>
-                            <li>✓ Безлимитный трафик</li>
+                            <li><i data-lucide="check" class="icon-check"></i> Полный доступ</li>
+                            <li><i data-lucide="check" class="icon-check"></i> До 2 устройств</li>
+                            <li><i data-lucide="check" class="icon-check"></i> Безлимитный трафик</li>
                         </ul>
                         <button class="btn btn-primary btn-full" onclick="activateTariff('trial')">
                             Попробовать бесплатно
@@ -162,20 +163,20 @@
                     <!-- Storm Card -->
                     <div class="tariff-card">
                         <div class="tariff-header">
-                            <div class="tariff-icon">🚀</div>
+                            <div class="tariff-icon"><i data-lucide="zap"></i></div>
                             <div>
                                 <div class="tariff-name">STORM</div>
                                 <div class="tariff-period">1 месяц</div>
                             </div>
                             <div class="tariff-price">
                                 <span class="price-amount">75</span>
-                                <span class="price-currency">⭐</span>
+                                <span class="price-currency"><i data-lucide="star" class="icon-sm"></i></span>
                             </div>
                         </div>
                         <ul class="tariff-features">
-                            <li>✓ До 3 устройств</li>
-                            <li>✓ Безлимитный трафик</li>
-                            <li>✓ Максимальная скорость</li>
+                            <li><i data-lucide="check" class="icon-check"></i> До 3 устройств</li>
+                            <li><i data-lucide="check" class="icon-check"></i> Безлимитный трафик</li>
+                            <li><i data-lucide="check" class="icon-check"></i> Максимальная скорость</li>
                         </ul>
                         <button class="btn btn-outline btn-full" onclick="activateTariff('storm')">
                             Подключить
@@ -186,21 +187,21 @@
                     <div class="tariff-card popular">
                         <div class="tariff-badge popular-badge">ПОПУЛЯРНЫЙ</div>
                         <div class="tariff-header">
-                            <div class="tariff-icon">🔥</div>
+                            <div class="tariff-icon"><i data-lucide="flame"></i></div>
                             <div>
                                 <div class="tariff-name">GALAXY</div>
                                 <div class="tariff-period">3 месяца</div>
                             </div>
                             <div class="tariff-price">
                                 <span class="price-amount">200</span>
-                                <span class="price-currency">⭐</span>
+                                <span class="price-currency"><i data-lucide="star" class="icon-sm"></i></span>
                             </div>
                         </div>
                         <div class="tariff-save">Выгода 11%</div>
                         <ul class="tariff-features">
-                            <li>✓ До 5 устройств</li>
-                            <li>✓ Безлимитный трафик</li>
-                            <li>✓ Максимальная скорость</li>
+                            <li><i data-lucide="check" class="icon-check"></i> До 5 устройств</li>
+                            <li><i data-lucide="check" class="icon-check"></i> Безлимитный трафик</li>
+                            <li><i data-lucide="check" class="icon-check"></i> Максимальная скорость</li>
                         </ul>
                         <button class="btn btn-primary btn-full btn-glow" onclick="activateTariff('galaxy')">
                             Подключить
@@ -209,24 +210,24 @@
 
                     <!-- Infinity Card -->
                     <div class="tariff-card premium">
-                        <div class="tariff-badge premium-badge">👑 VIP</div>
+                        <div class="tariff-badge premium-badge"><i data-lucide="crown" class="icon-inline"></i> VIP</div>
                         <div class="tariff-header">
-                            <div class="tariff-icon">👑</div>
+                            <div class="tariff-icon"><i data-lucide="crown"></i></div>
                             <div>
                                 <div class="tariff-name">INFINITY</div>
                                 <div class="tariff-period">1 год</div>
                             </div>
                             <div class="tariff-price">
                                 <span class="price-amount">750</span>
-                                <span class="price-currency">⭐</span>
+                                <span class="price-currency"><i data-lucide="star" class="icon-sm"></i></span>
                             </div>
                         </div>
                         <div class="tariff-save">Выгода 18%</div>
                         <ul class="tariff-features">
-                            <li>✓ До 10 устройств</li>
-                            <li>✓ Безлимитный трафик</li>
-                            <li>✓ VIP поддержка</li>
-                            <li>✓ Приоритетные обновления</li>
+                            <li><i data-lucide="check" class="icon-check"></i> До 10 устройств</li>
+                            <li><i data-lucide="check" class="icon-check"></i> Безлимитный трафик</li>
+                            <li><i data-lucide="check" class="icon-check"></i> VIP поддержка</li>
+                            <li><i data-lucide="check" class="icon-check"></i> Приоритетные обновления</li>
                         </ul>
                         <button class="btn btn-premium btn-full" onclick="activateTariff('infinity')">
                             Подключить
@@ -234,7 +235,7 @@
                     </div>
 
                     <div class="payment-note">
-                        ⭐ Оплата через Telegram Stars — безопасно и моментально
+                        <i data-lucide="star" class="icon-inline"></i> Оплата через Telegram Stars — безопасно и моментально
                     </div>
                 </div>
             </section>
@@ -243,7 +244,7 @@
             <section class="page" id="page-profile">
                 <div class="page-scroll">
                     <div class="profile-header">
-                        <div class="profile-avatar" id="profileAvatar">👤</div>
+                        <div class="profile-avatar" id="profileAvatar"><i data-lucide="user" class="icon-xl"></i></div>
                         <div class="profile-name" id="profileName">—</div>
                         <div class="profile-id" id="profileId">ID: —</div>
                     </div>
@@ -251,37 +252,37 @@
                     <!-- Key Section -->
                     <div class="section-title" id="keyTitle" style="display:none;">Ключ подключения</div>
                     <div class="key-card glass" id="keyCard" style="display:none;">
-                        <div class="key-label">🔑 VLESS ключ</div>
+                        <div class="key-label"><i data-lucide="key-round" class="icon-inline"></i> VLESS ключ</div>
                         <div class="key-value" id="keyValue">—</div>
                         <button class="btn btn-sm btn-copy" id="btnCopyKeyProfile" onclick="copyKey()">
-                            📋 Скопировать
+                            <i data-lucide="copy" class="icon-inline"></i> Скопировать
                         </button>
                         <div class="key-divider"></div>
-                        <div class="key-label">🔄 Ссылка-подписка</div>
+                        <div class="key-label"><i data-lucide="link" class="icon-inline"></i> Ссылка-подписка</div>
                         <div class="key-value" id="subValue">—</div>
                         <button class="btn btn-sm btn-copy" onclick="copySub()">
-                            📋 Скопировать
+                            <i data-lucide="copy" class="icon-inline"></i> Скопировать
                         </button>
                         <button class="btn btn-sm btn-qr" id="btnShowQR" onclick="showQRCode()" style="display:none;">
-                            📷 QR-код
+                            <i data-lucide="qr-code" class="icon-inline"></i> QR-код
                         </button>
                     </div>
 
                     <!-- Traffic Stats -->
-                    <div class="section-title" id="trafficTitle" style="display:none;">📊 Трафик</div>
+                    <div class="section-title" id="trafficTitle" style="display:none;"><i data-lucide="bar-chart-3" class="icon-inline"></i> Трафик</div>
                     <div class="info-card glass" id="trafficCard" style="display:none;">
                         <div class="info-row">
-                            <span class="info-label">⬆️ Отправлено</span>
+                            <span class="info-label"><i data-lucide="arrow-up" class="icon-inline"></i> Отправлено</span>
                             <span class="info-value" id="trafficUpload">0 B</span>
                         </div>
                         <div class="info-divider"></div>
                         <div class="info-row">
-                            <span class="info-label">⬇️ Получено</span>
+                            <span class="info-label"><i data-lucide="arrow-down" class="icon-inline"></i> Получено</span>
                             <span class="info-value" id="trafficDownload">0 B</span>
                         </div>
                         <div class="info-divider"></div>
                         <div class="info-row">
-                            <span class="info-label">📈 Всего</span>
+                            <span class="info-label"><i data-lucide="trending-up" class="icon-inline"></i> Всего</span>
                             <span class="info-value traffic-total" id="trafficTotal">0 B</span>
                         </div>
                     </div>
@@ -290,22 +291,22 @@
                     <div class="section-title" id="profileSubTitle" style="display:none;">Подписка</div>
                     <div class="info-card glass" id="profileSubCard" style="display:none;">
                         <div class="info-row">
-                            <span class="info-label">📊 Тариф</span>
+                            <span class="info-label"><i data-lucide="tag" class="icon-inline"></i> Тариф</span>
                             <span class="info-value" id="profileTariff">—</span>
                         </div>
                         <div class="info-divider"></div>
                         <div class="info-row">
-                            <span class="info-label">📡 Статус</span>
+                            <span class="info-label"><i data-lucide="wifi" class="icon-inline"></i> Статус</span>
                             <span class="info-value" id="profileStatus">—</span>
                         </div>
                         <div class="info-divider"></div>
                         <div class="info-row">
-                            <span class="info-label">⏰ До</span>
+                            <span class="info-label"><i data-lucide="clock" class="icon-inline"></i> До</span>
                             <span class="info-value" id="profileExpires">—</span>
                         </div>
                         <div class="info-divider"></div>
                         <div class="info-row">
-                            <span class="info-label">📱 Устройства</span>
+                            <span class="info-label"><i data-lucide="smartphone" class="icon-inline"></i> Устройства</span>
                             <span class="info-value" id="profileDevices">—</span>
                         </div>
                     </div>
@@ -317,25 +318,25 @@
                     </div>
 
                     <!-- Referral System -->
-                    <div class="section-title">🎁 Пригласи друга</div>
+                    <div class="section-title"><i data-lucide="gift" class="icon-inline"></i> Пригласи друга</div>
                     <div class="info-card glass" id="referralCard">
                         <div class="referral-text">
                             Получи <strong>+7 дней</strong> VPN за каждого друга!
                         </div>
                         <div class="referral-stats">
-                            <span class="referral-count">👥 Приглашено: <strong id="refCount">0</strong></span>
+                            <span class="referral-count"><i data-lucide="users" class="icon-inline"></i> Приглашено: <strong id="refCount">0</strong></span>
                         </div>
                         <div class="referral-link-box" id="refLinkBox" style="display:none;">
                             <div class="referral-link" id="refLink">—</div>
                         </div>
                         <div class="referral-actions">
-                            <button class="btn btn-sm btn-primary" onclick="copyRefLink()">📋 Скопировать ссылку</button>
-                            <button class="btn btn-sm btn-qr" onclick="shareRefLink()">📤 Поделиться</button>
+                            <button class="btn btn-sm btn-primary" onclick="copyRefLink()"><i data-lucide="copy" class="icon-inline"></i> Скопировать ссылку</button>
+                            <button class="btn btn-sm btn-qr" onclick="shareRefLink()"><i data-lucide="share-2" class="icon-inline"></i> Поделиться</button>
                         </div>
                     </div>
 
                     <!-- Promo Code -->
-                    <div class="section-title">🏷 Промокод</div>
+                    <div class="section-title"><i data-lucide="ticket" class="icon-inline"></i> Промокод</div>
                     <div class="info-card glass" id="promoCard">
                         <div class="promo-input-row">
                             <input type="text" class="promo-input" id="promoInput" placeholder="Введи промокод" maxlength="20">
@@ -347,7 +348,7 @@
                     <!-- Support -->
                     <div class="section-title">Поддержка</div>
                     <button class="action-card full-width" onclick="openSupport()">
-                        <div class="action-icon">🆘</div>
+                        <div class="action-icon"><i data-lucide="life-buoy"></i></div>
                         <div class="action-label">Написать в поддержку</div>
                     </button>
                 </div>
@@ -357,7 +358,7 @@
             <div class="modal-overlay" id="qrModal" style="display:none;" onclick="closeQRModal(event)">
                 <div class="qr-modal-inner glass">
                     <div class="modal-header">
-                        <h3>📷 QR-код подписки</h3>
+                        <h3><i data-lucide="qr-code" class="icon-inline"></i> QR-код подписки</h3>
                         <button class="modal-close" onclick="closeQR()">✕</button>
                     </div>
                     <div class="qr-container" id="qrContainer"></div>
@@ -369,13 +370,13 @@
             <section class="page" id="page-setup">
                 <div class="page-scroll">
                     <div class="page-header">
-                        <h2 class="page-title">📖 Инструкция</h2>
+                        <h2 class="page-title"><i data-lucide="book-open" class="icon-inline"></i> Инструкция</h2>
                         <p class="page-description">Выбери своё устройство</p>
                     </div>
 
                     <div class="device-list">
                         <button class="device-card" onclick="showSetup('ios')">
-                            <div class="device-icon">📱</div>
+                            <div class="device-icon"><i data-lucide="smartphone"></i></div>
                             <div class="device-info">
                                 <div class="device-name">iPhone / iPad</div>
                                 <div class="device-apps">Shadowrocket, Streisand, V2Box</div>
@@ -384,7 +385,7 @@
                         </button>
 
                         <button class="device-card" onclick="showSetup('android')">
-                            <div class="device-icon">🤖</div>
+                            <div class="device-icon"><i data-lucide="tablet-smartphone"></i></div>
                             <div class="device-info">
                                 <div class="device-name">Android</div>
                                 <div class="device-apps">v2rayNG, Hiddify, NekoBox</div>
@@ -393,7 +394,7 @@
                         </button>
 
                         <button class="device-card" onclick="showSetup('macos')">
-                            <div class="device-icon">🖥</div>
+                            <div class="device-icon"><i data-lucide="monitor"></i></div>
                             <div class="device-info">
                                 <div class="device-name">macOS</div>
                                 <div class="device-apps">Hiddify, FoXray, V2Box</div>
@@ -402,7 +403,7 @@
                         </button>
 
                         <button class="device-card" onclick="showSetup('windows')">
-                            <div class="device-icon">💻</div>
+                            <div class="device-icon"><i data-lucide="laptop"></i></div>
                             <div class="device-info">
                                 <div class="device-name">Windows</div>
                                 <div class="device-apps">Hiddify, v2rayN, Nekoray</div>
@@ -411,7 +412,7 @@
                         </button>
 
                         <button class="device-card" onclick="showSetup('linux')">
-                            <div class="device-icon">🐧</div>
+                            <div class="device-icon"><i data-lucide="terminal"></i></div>
                             <div class="device-info">
                                 <div class="device-name">Linux</div>
                                 <div class="device-apps">Hiddify, Nekoray, sing-box</div>
@@ -426,25 +427,25 @@
             <section class="page" id="page-admin">
                 <div class="page-scroll">
                     <div class="page-header">
-                        <h2 class="page-title">🔧 Админ-панель</h2>
+                        <h2 class="page-title"><i data-lucide="settings" class="icon-inline"></i> Админ-панель</h2>
                         <p class="page-description">Управление подписками</p>
                     </div>
 
                     <!-- Stats Grid -->
-                    <div class="section-title">📊 Статистика</div>
+                    <div class="section-title"><i data-lucide="bar-chart-3" class="icon-inline"></i> Статистика</div>
                     <div class="stats-grid admin-stats" id="adminStats">
                         <div class="stat-card">
-                            <div class="stat-icon">👥</div>
+                            <div class="stat-icon"><i data-lucide="users"></i></div>
                             <div class="stat-value" id="adminTotalUsers">—</div>
                             <div class="stat-label">Всего</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-icon">✅</div>
+                            <div class="stat-icon"><i data-lucide="user-check"></i></div>
                             <div class="stat-value" id="adminActiveUsers">—</div>
                             <div class="stat-label">Активных</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-icon">⭐</div>
+                            <div class="stat-icon"><i data-lucide="star"></i></div>
                             <div class="stat-value" id="adminTotalStars">—</div>
                             <div class="stat-label">Звёзд</div>
                         </div>
@@ -492,7 +493,7 @@
         <div class="modal" id="setupModal">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button class="modal-back" onclick="closeModal()">← Назад</button>
+                    <button class="modal-back" onclick="closeModal()"><i data-lucide="arrow-left" class="icon-inline"></i> Назад</button>
                     <span class="modal-title" id="modalTitle">Инструкция</span>
                 </div>
                 <div class="modal-body" id="modalBody"></div>
@@ -501,35 +502,36 @@
 
         <!-- Toast Notification -->
         <div class="toast" id="toast">
-            <span class="toast-icon">✅</span>
+            <span class="toast-icon"><i data-lucide="check-circle"></i></span>
             <span class="toast-text" id="toastText">Скопировано!</span>
         </div>
 
         <!-- Bottom Navigation -->
         <nav class="bottom-nav" id="bottomNav">
             <button class="nav-item active" data-page="home" onclick="navigateTo('home')">
-                <div class="nav-icon">🏠</div>
+                <div class="nav-icon"><i data-lucide="home"></i></div>
                 <div class="nav-label">Главная</div>
             </button>
             <button class="nav-item" data-page="tariffs" onclick="navigateTo('tariffs')">
-                <div class="nav-icon">💎</div>
+                <div class="nav-icon"><i data-lucide="gem"></i></div>
                 <div class="nav-label">Тарифы</div>
             </button>
             <button class="nav-item" data-page="profile" onclick="navigateTo('profile')">
-                <div class="nav-icon">👤</div>
+                <div class="nav-icon"><i data-lucide="user"></i></div>
                 <div class="nav-label">Профиль</div>
             </button>
             <button class="nav-item" data-page="setup" onclick="navigateTo('setup')">
-                <div class="nav-icon">📖</div>
+                <div class="nav-icon"><i data-lucide="book-open"></i></div>
                 <div class="nav-label">Помощь</div>
             </button>
             <button class="nav-item admin-nav-item" data-page="admin" onclick="navigateTo('admin')" id="navAdmin" style="display:none;">
-                <div class="nav-icon">🔧</div>
+                <div class="nav-icon"><i data-lucide="settings"></i></div>
                 <div class="nav-label">Админ</div>
             </button>
         </nav>
     </div>
 
     <script src="js/app.js"></script>
+    <script>lucide.createIcons();</script>
 </body>
 </html>

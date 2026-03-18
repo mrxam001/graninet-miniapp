@@ -93,6 +93,28 @@ body::before {
 
 .hidden { display: none !important; }
 
+/* === Lucide Icons === */
+[data-lucide], .lucide {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    vertical-align: middle;
+}
+
+.icon-hero { width: 48px; height: 48px; }
+.icon-xl { width: 40px; height: 40px; }
+.icon-lg { width: 32px; height: 32px; }
+.icon-sm { width: 18px; height: 18px; }
+.icon-inline { width: 16px; height: 16px; margin-right: 4px; opacity: 0.7; }
+.icon-check { width: 14px; height: 14px; color: var(--accent-light); margin-right: 2px; }
+
+.action-icon [data-lucide], .action-icon .lucide { width: 24px; height: 24px; }
+.stat-icon [data-lucide], .stat-icon .lucide { width: 22px; height: 22px; }
+.tariff-icon [data-lucide], .tariff-icon .lucide { width: 28px; height: 28px; }
+.nav-icon [data-lucide], .nav-icon .lucide { width: 22px; height: 22px; }
+.cta-icon [data-lucide], .cta-icon .lucide { width: 36px; height: 36px; }
+
 /* === Loader === */
 .loader {
     position: fixed;
