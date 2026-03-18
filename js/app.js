@@ -46,6 +46,9 @@ async function initApp() {
     // Load user data from API
     await loadUserData();
 
+    // Check admin status
+    await checkAdmin();
+
     // Hide loader, show app
     setTimeout(() => {
         const loader = document.getElementById('loader');
@@ -260,6 +263,12 @@ function navigateTo(page) {
     }
 
     currentPage = page;
+
+    // Load admin data when navigating to admin page
+    if (page === 'admin' && isAdminUser) {
+        loadAdminStats();
+        loadAdminFriends();
+    }
 }
 
 // === Copy Functions ===
@@ -487,3 +496,191 @@ function openSupport() {
 // === Event Listeners ===
 document.getElementById('btnCopyKey')?.addEventListener('click', copyKey);
 document.getElementById('btnCopySub')?.addEventListener('click', copySub);
+
+
+// ============================================
+// === ADMIN PANEL ===
+// ============================================
+
+let isAdminUser = false;
+
+async function checkAdmin() {
+    const data = await apiRequest('/api/admin/check');
+    if (data && data.success && data.is_admin) {
+        isAdminUser = true;
+        // Show admin nav tab
+        const navAdmin = document.getElementById('navAdmin');
+        if (navAdmin) navAdmin.style.display = '';
+    }
+}
+
+async function loadAdminStats() {
+    if (!isAdminUser) return;
+
+    const data = await apiRequest('/api/admin/stats');
+    if (data && data.success) {
+        const s = data.stats;
+        document.getElementById('adminTotalUsers').textContent = s.total_users;
+        document.getElementById('adminActiveUsers').textContent = s.active_users;
+        document.getElementById('adminTotalStars').textContent = s.total_stars;
+        document.getElementById('adminTotalFriends').textContent = `${s.active_friends}/${s.total_friends}`;
+    }
+}
+
+async function loadAdminFriends() {
+    if (!isAdminUser) return;
+
+    const data = await apiRequest('/api/admin/friends');
+    if (!data || !data.success) {
+        document.getElementById('friendsList').innerHTML =
+            '<div class="info-card glass" style="text-align:center;color:var(--text-muted)">❌ Ошибка загрузки</div>';
+        return;
+    }
+
+    const friends = data.friends;
+    const list = document.getElementById('friendsList');
+    const count = document.getElementById('friendsCount');
+
+    count.textContent = `(${friends.length})`;
+
+    if (friends.length === 0) {
+        list.innerHTML =
+            '<div class="info-card glass" style="text-align:center;color:var(--text-muted)">Пока нет подписок. Создай первую!</div>';
+        return;
+    }
+
+    let html = '';
+    friends.forEach(f => {
+        let cardClass = 'friend-card';
+        let statusClass, statusText;
+
+        if (!f.is_active) {
+            cardClass += ' expired';
+            statusClass = 'friend-status expired-status';
+            statusText = '❌ Истекла';
+        } else if (f.is_permanent) {
+            cardClass += ' permanent';
+            statusClass = 'friend-status permanent-status';
+            statusText = '♾ Бессрочно';
+        } else {
+            cardClass += ' limited';
+            statusClass = 'friend-status active';
+            statusText = '✅ Активна';
+        }
+
+        html += `
+        <div class="${cardClass}">
+            <div class="friend-header">
+                <span class="friend-name">${f.name}</span>
+                <span class="${statusClass}">${statusText}</span>
+            </div>
+            <div class="friend-meta">
+                <span>📱 ${f.devices_limit} устр.</span>
+                <span>⏰ ${f.expires_text}</span>
+            </div>
+            <div class="friend-actions">
+                <button class="btn btn-copy" onclick="copyFriendKey('${encodeURIComponent(f.vless_link)}')">
+                    🔑 Ключ
+                </button>
+                <button class="btn btn-copy" onclick="copyFriendKey('${encodeURIComponent(f.sub_link)}')">
+                    🔄 Подписка
+                </button>
+                <button class="btn btn-danger" onclick="deleteFriend('${f.name}')">
+                    🗑
+                </button>
+            </div>
+        </div>`;
+    });
+
+    list.innerHTML = html;
+}
+
+function copyFriendKey(encodedLink) {
+    const link = decodeURIComponent(encodedLink);
+    copyToClipboard(link, '📋 Скопировано!');
+}
+
+async function addFriend() {
+    const name = document.getElementById('friendName').value.trim();
+    const days = parseInt(document.getElementById('friendDays').value) || 0;
+    const devices = parseInt(document.getElementById('friendDevices').value) || 2;
+
+    if (!name) {
+        showToast('❌ Введи имя!');
+        if (tg?.HapticFeedback) tg.HapticFeedback.notificationOccurred('error');
+        return;
+    }
+
+    const btn = document.getElementById('btnAddFriend');
+    btn.disabled = true;
+    btn.textContent = '⏳ Создаём...';
+
+    const data = await apiRequest('/api/admin/friend', {
+        method: 'POST',
+        body: JSON.stringify({ name, days, devices }),
+    });
+
+    btn.disabled = false;
+    btn.textContent = '➕ Создать подписку';
+
+    if (data && data.success) {
+        showToast(`✅ ${name} создан!`);
+        if (tg?.HapticFeedback) tg.HapticFeedback.notificationOccurred('success');
+
+        // Show result
+        const f = data.friend;
+        const resultHtml = `
+        <div class="result-card" id="lastResult">
+            <div class="result-title">✅ ${f.name} — создано!</div>
+            <div style="font-size:12px;color:var(--text-secondary);margin-bottom:6px">
+                📱 ${f.devices_limit} устр. | ⏰ ${f.expires_text}
+            </div>
+            <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px">🔑 Ключ:</div>
+            <div class="result-key">${f.vless_link}</div>
+            <button class="btn btn-copy btn-full" onclick="copyFriendKey('${encodeURIComponent(f.vless_link)}')">
+                📋 Скопировать ключ
+            </button>
+            <div style="font-size:11px;color:var(--text-muted);margin:8px 0 4px">🔄 Подписка:</div>
+            <div class="result-key">${f.sub_link}</div>
+            <button class="btn btn-copy btn-full" onclick="copyFriendKey('${encodeURIComponent(f.sub_link)}')">
+                📋 Скопировать подписку
+            </button>
+        </div>`;
+
+        // Insert result before form
+        const existingResult = document.getElementById('lastResult');
+        if (existingResult) existingResult.remove();
+        document.getElementById('addFriendForm').insertAdjacentHTML('beforebegin', resultHtml);
+
+        // Clear form
+        document.getElementById('friendName').value = '';
+        document.getElementById('friendDays').value = '0';
+        document.getElementById('friendDevices').value = '2';
+
+        // Reload friends list
+        await loadAdminFriends();
+        await loadAdminStats();
+    } else {
+        const error = data?.error || 'Ошибка создания';
+        showToast(`❌ ${error}`);
+        if (tg?.HapticFeedback) tg.HapticFeedback.notificationOccurred('error');
+    }
+}
+
+async function deleteFriend(name) {
+    if (!confirm(`Удалить «${name}»?`)) return;
+
+    if (tg?.HapticFeedback) tg.HapticFeedback.impactOccurred('heavy');
+
+    const data = await apiRequest(`/api/admin/friend/${encodeURIComponent(name)}`, {
+        method: 'DELETE',
+    });
+
+    if (data && data.success) {
+        showToast(`🗑 ${name} удалён`);
+        await loadAdminFriends();
+        await loadAdminStats();
+    } else {
+        showToast('❌ Ошибка удаления');
+    }
+}

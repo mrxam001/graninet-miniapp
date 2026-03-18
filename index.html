@@ -358,6 +358,71 @@
                     </div>
                 </div>
             </section>
+
+            <!-- ===== ADMIN PAGE ===== -->
+            <section class="page" id="page-admin">
+                <div class="page-scroll">
+                    <div class="page-header">
+                        <h2 class="page-title">🔧 Админ-панель</h2>
+                        <p class="page-description">Управление подписками</p>
+                    </div>
+
+                    <!-- Stats Grid -->
+                    <div class="section-title">📊 Статистика</div>
+                    <div class="stats-grid admin-stats" id="adminStats">
+                        <div class="stat-card">
+                            <div class="stat-icon">👥</div>
+                            <div class="stat-value" id="adminTotalUsers">—</div>
+                            <div class="stat-label">Всего</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">✅</div>
+                            <div class="stat-value" id="adminActiveUsers">—</div>
+                            <div class="stat-label">Активных</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⭐</div>
+                            <div class="stat-value" id="adminTotalStars">—</div>
+                            <div class="stat-label">Звёзд</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🤝</div>
+                            <div class="stat-value" id="adminTotalFriends">—</div>
+                            <div class="stat-label">Друзей</div>
+                        </div>
+                    </div>
+
+                    <!-- Add Friend Form -->
+                    <div class="section-title">➕ Новая подписка</div>
+                    <div class="admin-form glass" id="addFriendForm">
+                        <div class="form-group">
+                            <label class="form-label">Имя</label>
+                            <input type="text" class="form-input" id="friendName" placeholder="Например: Вася" autocomplete="off">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Дни (0 = ♾)</label>
+                                <input type="number" class="form-input" id="friendDays" placeholder="0" min="0" max="3650" value="0">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Устройства</label>
+                                <input type="number" class="form-input" id="friendDevices" placeholder="2" min="1" max="20" value="2">
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-full" id="btnAddFriend" onclick="addFriend()">
+                            ➕ Создать подписку
+                        </button>
+                    </div>
+
+                    <!-- Friends List -->
+                    <div class="section-title">🤝 Подписки <span class="friends-count" id="friendsCount"></span></div>
+                    <div class="friends-list" id="friendsList">
+                        <div class="info-card glass" style="text-align:center;color:var(--text-muted)">
+                            ⏳ Загрузка...
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <!-- Setup Detail Modal -->
@@ -394,6 +459,10 @@
             <button class="nav-item" data-page="setup" onclick="navigateTo('setup')">
                 <div class="nav-icon">📖</div>
                 <div class="nav-label">Помощь</div>
+            </button>
+            <button class="nav-item admin-nav-item" data-page="admin" onclick="navigateTo('admin')" id="navAdmin" style="display:none;">
+                <div class="nav-icon">🔧</div>
+                <div class="nav-label">Админ</div>
             </button>
         </nav>
     </div>
