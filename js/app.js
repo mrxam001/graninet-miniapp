@@ -4,9 +4,8 @@
    ============================================ */
 
 // === Configuration ===
-const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-    ? 'http://85.192.60.192:8080'
-    : 'https://85.192.60.192:8080';  // Will update when HTTPS is set up
+// API server on VPN host — using HTTP (will need HTTPS proxy for production)
+const API_BASE = 'http://85.192.60.192:8080';
 
 // === Telegram WebApp ===
 const tg = window.Telegram?.WebApp;
