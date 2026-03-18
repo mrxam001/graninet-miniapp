@@ -370,77 +370,79 @@ const setupInstructions = {
     ios: {
         title: '📱 iPhone / iPad',
         apps: [
-            { name: 'Shadowrocket', desc: 'Лучший (платный, ~$3)' },
-            { name: 'Streisand', desc: 'Бесплатный, удобный' },
-            { name: 'V2Box / FoXray / Happ', desc: 'Бесплатные альтернативы' },
+            { name: '⭐ Streisand', desc: 'Бесплатный, удобный', url: 'https://apps.apple.com/app/streisand/id6450534064' },
+            { name: 'Shadowrocket', desc: 'Лучший (платный, ~$3)', url: 'https://apps.apple.com/app/shadowrocket/id932747118' },
+            { name: 'V2Box', desc: 'Бесплатный', url: 'https://apps.apple.com/app/v2box-v2ray-client/id6446814690' },
+            { name: 'FoXray', desc: 'Бесплатный', url: 'https://apps.apple.com/app/foxray/id6448898396' },
+            { name: 'Happ', desc: 'Бесплатный', url: 'https://apps.apple.com/app/happ-proxy-utility/id6504287215' },
         ],
         steps: [
-            'Скачай приложение из <strong>App Store</strong>',
-            'Скопируй свой <strong>ключ</strong> (на странице Профиль)',
-            'Открой приложение — оно предложит <strong>добавить сервер</strong>',
-            'Нажми <strong>Добавить</strong> → включи VPN',
+            '📲 Скачай приложение <strong>ниже</strong> (рекомендуем Streisand)',
+            '🔑 Нажми кнопку <strong>«📋 Скопировать ключ»</strong>',
+            '📂 Приложение само предложит <strong>добавить сервер</strong>',
+            '✅ Нажми <strong>Добавить</strong> и <strong>включи VPN</strong>!',
         ],
-        tip: 'Через подписку (автообновление): в приложении нажми <strong>+ → Subscribe</strong> и вставь ссылку-подписку'
+        tip: 'Через подписку: в приложении <strong>+ → Subscribe</strong>, вставь ссылку-подписку → все 6 протоколов добавятся автоматически!'
     },
     android: {
         title: '🤖 Android',
         apps: [
-            { name: 'v2rayNG', desc: 'Лучший (бесплатно)' },
-            { name: 'Hiddify', desc: 'Удобный (бесплатно)' },
-            { name: 'NekoBox', desc: 'Продвинутый' },
+            { name: '⭐ Hiddify', desc: 'Самый удобный', url: 'https://play.google.com/store/apps/details?id=app.hiddify.com' },
+            { name: 'v2rayNG', desc: 'Популярный', url: 'https://play.google.com/store/apps/details?id=com.v2ray.ang' },
+            { name: 'NekoBox', desc: 'Продвинутый', url: 'https://github.com/MatsuriDayo/NekoBoxForAndroid/releases/latest' },
         ],
         steps: [
-            'Скачай <strong>v2rayNG</strong> из Google Play',
-            'Скопируй свой <strong>ключ</strong>',
-            'В v2rayNG: <strong>+ → Импорт из буфера</strong>',
-            'Нажми <strong>▶️</strong> внизу экрана',
+            '📲 Скачай <strong>Hiddify</strong> или <strong>v2rayNG</strong> ниже',
+            '🔑 Нажми кнопку <strong>«📋 Скопировать ключ»</strong>',
+            '📂 В приложении: <strong>+ → Импорт из буфера</strong>',
+            '▶️ Нажми кнопку <strong>запуска</strong> внизу экрана',
         ],
-        tip: 'Через подписку: <strong>+ → Импорт из URL подписки</strong> → вставь ссылку'
+        tip: 'Через подписку: <strong>+ → Импорт URL</strong> → вставь ссылку-подписку → все протоколы подключатся!'
     },
     macos: {
         title: '🖥 macOS',
         apps: [
-            { name: 'Hiddify', desc: 'Бесплатно (hiddify.com)' },
-            { name: 'Shadowrocket', desc: 'Mac App Store' },
-            { name: 'V2Box / FoXray', desc: 'App Store' },
+            { name: '⭐ Hiddify', desc: 'Бесплатно', url: 'https://github.com/hiddify/hiddify-app/releases/latest' },
+            { name: 'FoXray', desc: 'App Store', url: 'https://apps.apple.com/app/foxray/id6448898396' },
+            { name: 'V2Box', desc: 'App Store', url: 'https://apps.apple.com/app/v2box-v2ray-client/id6446814690' },
         ],
         steps: [
-            'Скачай <strong>Hiddify</strong> с hiddify.com',
-            'Скопируй <strong>ключ</strong>',
-            'Hiddify → <strong>New Profile</strong> → вставь ключ',
-            'Нажми <strong>Connect</strong>',
+            '📲 Скачай <strong>Hiddify</strong> (ссылка ниже)',
+            '🔑 Нажми <strong>«📋 Скопировать ключ»</strong>',
+            '📂 Hiddify → <strong>New Profile</strong> → вставь ключ',
+            '✅ Нажми <strong>Connect</strong>',
         ],
-        tip: 'Также можно использовать <strong>ссылку-подписку</strong> для автообновления ключа'
+        tip: 'Ссылку-подписку можно вставить через <strong>New Profile → Subscription</strong> для автообновления'
     },
     windows: {
         title: '💻 Windows',
         apps: [
-            { name: 'Hiddify', desc: 'Простой (hiddify.com)' },
-            { name: 'v2rayN', desc: 'Популярный (GitHub)' },
-            { name: 'Nekoray', desc: 'Продвинутый' },
+            { name: '⭐ Hiddify', desc: 'Самый простой', url: 'https://github.com/hiddify/hiddify-app/releases/latest' },
+            { name: 'v2rayN', desc: 'Популярный', url: 'https://github.com/2dust/v2rayN/releases/latest' },
+            { name: 'Nekoray', desc: 'Продвинутый', url: 'https://github.com/MatsuriDayo/nekoray/releases/latest' },
         ],
         steps: [
-            'Скачай <strong>Hiddify</strong> с hiddify.com',
-            'Установи и запусти',
-            'Скопируй <strong>ключ</strong> — Hiddify подхватит автоматически',
-            'Нажми <strong>Connect</strong>',
+            '📲 Скачай <strong>Hiddify</strong> (ссылка ниже)',
+            '🔧 Установи и запусти',
+            '🔑 Скопируй ключ — Hiddify <strong>подхватит автоматически</strong>',
+            '✅ Нажми <strong>Connect</strong>',
         ],
-        tip: 'Если автоматически не подхватил — <strong>Add → Paste</strong>'
+        tip: 'Если не подхватил автоматически — <strong>+ → Add from Clipboard</strong>'
     },
     linux: {
         title: '🐧 Linux',
         apps: [
-            { name: 'Hiddify', desc: 'GUI (hiddify.com)' },
-            { name: 'Nekoray', desc: 'GUI (GitHub)' },
-            { name: 'sing-box', desc: 'CLI' },
+            { name: '⭐ Hiddify', desc: 'GUI', url: 'https://github.com/hiddify/hiddify-app/releases/latest' },
+            { name: 'Nekoray', desc: 'GUI', url: 'https://github.com/MatsuriDayo/nekoray/releases/latest' },
+            { name: 'sing-box', desc: 'CLI', url: 'https://github.com/SagerNet/sing-box/releases/latest' },
         ],
         steps: [
-            'Скачай <strong>Nekoray</strong> с GitHub',
-            'Скопируй <strong>ключ</strong>',
-            '<strong>Program → Add from Clipboard</strong>',
-            'ПКМ по серверу → <strong>Start</strong>',
+            '📲 Скачай <strong>Hiddify</strong> или <strong>Nekoray</strong>',
+            '🔑 Скопируй <strong>ключ</strong> или <strong>ссылку-подписку</strong>',
+            '📂 <strong>Add from Clipboard</strong> или <strong>Subscription URL</strong>',
+            '✅ ПКМ по серверу → <strong>Start</strong>',
         ],
-        tip: 'CLI вариант: используй <strong>sing-box</strong> с конфиг-файлом'
+        tip: 'CLI: <code>sing-box run -c config.json</code>'
     }
 };
 
@@ -454,16 +456,35 @@ function showSetup(device) {
 
     modalTitle.textContent = info.title;
 
-    let html = '<h3>Приложения</h3>';
+    // Copy key button
+    let html = '';
+    if (userData?.user?.sub_link) {
+        html += `
+            <div class="setup-key-actions">
+                <button class="btn btn-primary btn-sm" onclick="copySub(); showToast('📋 Ссылка-подписка скопирована!')">
+                    📋 Скопировать подписку
+                </button>
+                <button class="btn btn-sm btn-copy" onclick="copyKey(); showToast('🔑 Ключ скопирован!')">
+                    🔑 Скопировать ключ
+                </button>
+            </div>`;
+    }
+
+    // Apps with download buttons
+    html += '<div class="setup-section-title">📲 Скачай приложение</div>';
     info.apps.forEach(app => {
         html += `
-            <div class="app-option">
-                <div class="app-name">${app.name}</div>
-                <div class="app-desc">${app.desc}</div>
-            </div>`;
+            <a href="${app.url}" target="_blank" class="app-download-card glass">
+                <div class="app-download-info">
+                    <div class="app-download-name">${app.name}</div>
+                    <div class="app-download-desc">${app.desc}</div>
+                </div>
+                <div class="app-download-btn">Скачать</div>
+            </a>`;
     });
 
-    html += '<div class="steps"><h3>Шаги подключения</h3>';
+    // Steps
+    html += '<div class="setup-section-title">📖 Как подключить</div>';
     info.steps.forEach((step, i) => {
         html += `
             <div class="step">
@@ -471,7 +492,6 @@ function showSetup(device) {
                 <div class="step-text">${step}</div>
             </div>`;
     });
-    html += '</div>';
 
     if (info.tip) {
         html += `<div class="tip"><strong>💡 Совет:</strong> ${info.tip}</div>`;
@@ -480,7 +500,6 @@ function showSetup(device) {
     modalBody.innerHTML = html;
     modal.classList.add('open');
 
-    // Show Telegram back button
     if (tg?.BackButton) {
         tg.BackButton.show();
     }
