@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -261,6 +262,28 @@
                         <button class="btn btn-sm btn-copy" onclick="copySub()">
                             📋 Скопировать
                         </button>
+                        <button class="btn btn-sm btn-qr" id="btnShowQR" onclick="showQRCode()" style="display:none;">
+                            📷 QR-код
+                        </button>
+                    </div>
+
+                    <!-- Traffic Stats -->
+                    <div class="section-title" id="trafficTitle" style="display:none;">📊 Трафик</div>
+                    <div class="info-card glass" id="trafficCard" style="display:none;">
+                        <div class="info-row">
+                            <span class="info-label">⬆️ Отправлено</span>
+                            <span class="info-value" id="trafficUpload">0 B</span>
+                        </div>
+                        <div class="info-divider"></div>
+                        <div class="info-row">
+                            <span class="info-label">⬇️ Получено</span>
+                            <span class="info-value" id="trafficDownload">0 B</span>
+                        </div>
+                        <div class="info-divider"></div>
+                        <div class="info-row">
+                            <span class="info-label">📈 Всего</span>
+                            <span class="info-value traffic-total" id="trafficTotal">0 B</span>
+                        </div>
                     </div>
 
                     <!-- Subscription Details -->
@@ -301,6 +324,18 @@
                     </button>
                 </div>
             </section>
+
+            <!-- QR Code Modal -->
+            <div class="modal-overlay" id="qrModal" style="display:none;" onclick="closeQRModal(event)">
+                <div class="modal-content glass">
+                    <div class="modal-header">
+                        <h3>📷 QR-код подписки</h3>
+                        <button class="modal-close" onclick="closeQR()">✕</button>
+                    </div>
+                    <div class="qr-container" id="qrContainer"></div>
+                    <p class="qr-hint">Отсканируй в VPN-приложении</p>
+                </div>
+            </div>
 
             <!-- ===== SETUP PAGE ===== -->
             <section class="page" id="page-setup">

@@ -177,6 +177,21 @@ function updateUI(user) {
         document.getElementById('profileExpires').textContent = user.expires_text;
         document.getElementById('profileDevices').textContent = `до ${user.devices_limit}`;
 
+        // Profile - traffic stats
+        if (user.traffic) {
+            document.getElementById('trafficTitle').style.display = '';
+            document.getElementById('trafficCard').style.display = '';
+            document.getElementById('trafficUpload').textContent = user.traffic.upload || '0 B';
+            document.getElementById('trafficDownload').textContent = user.traffic.download || '0 B';
+            document.getElementById('trafficTotal').textContent = user.traffic.total || '0 B';
+        }
+
+        // Show QR button if sub_link exists
+        if (user.sub_link) {
+            const qrBtn = document.getElementById('btnShowQR');
+            if (qrBtn) qrBtn.style.display = '';
+        }
+
         // Hide trial card if trial used
         if (user.trial_used) {
             const trialCard = document.getElementById('trialCard');
@@ -682,5 +697,47 @@ async function deleteFriend(name) {
         await loadAdminStats();
     } else {
         showToast('❌ Ошибка удаления');
+    }
+}
+
+// === QR Code ===
+function showQRCode() {
+    if (!userData?.user?.sub_link) return;
+
+    const modal = document.getElementById('qrModal');
+    const container = document.getElementById('qrContainer');
+    container.innerHTML = '';
+
+    try {
+        const qr = qrcode(0, 'M');
+        qr.addData(userData.user.sub_link);
+        qr.make();
+
+        const size = 8;
+        container.innerHTML = qr.createSvgTag(size, 0);
+
+        // Style the SVG
+        const svg = container.querySelector('svg');
+        if (svg) {
+            svg.style.maxWidth = '260px';
+            svg.style.height = 'auto';
+            svg.style.borderRadius = '12px';
+            svg.style.background = '#fff';
+            svg.style.padding = '16px';
+        }
+    } catch (e) {
+        container.innerHTML = '<p style="color: var(--text-secondary)">Ошибка генерации QR</p>';
+    }
+
+    modal.style.display = 'flex';
+}
+
+function closeQR() {
+    document.getElementById('qrModal').style.display = 'none';
+}
+
+function closeQRModal(event) {
+    if (event.target === event.currentTarget) {
+        closeQR();
     }
 }
