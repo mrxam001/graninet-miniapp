@@ -1,55 +1,58 @@
 /* ============================================
    ГРАНИ.НЕТ — Telegram Mini App Styles
-   Premium Dark Theme with Glassmorphism
+   Army Green + Black Premium Theme
    ============================================ */
 
 /* === CSS Variables === */
 :root {
-    /* Colors */
-    --bg-primary: #0a0e1a;
-    --bg-secondary: #111827;
-    --bg-card: rgba(17, 24, 39, 0.8);
-    --bg-card-hover: rgba(31, 41, 55, 0.9);
-    --bg-glass: rgba(255, 255, 255, 0.05);
-    --bg-glass-hover: rgba(255, 255, 255, 0.08);
+    /* Colors — Army Green on Black */
+    --bg-primary: #050505;
+    --bg-secondary: #0d0f0a;
+    --bg-tertiary: #151a10;
+    --bg-card: rgba(15, 20, 10, 0.85);
+    --bg-card-hover: rgba(25, 35, 15, 0.9);
+    --bg-glass: rgba(75, 83, 32, 0.08);
+    --bg-glass-hover: rgba(75, 83, 32, 0.14);
 
-    --text-primary: #f9fafb;
-    --text-secondary: #9ca3af;
-    --text-muted: #6b7280;
+    --text-primary: #e8eade;
+    --text-secondary: #8a9070;
+    --text-muted: #5a6340;
 
-    --accent: #6366f1;
-    --accent-light: #818cf8;
-    --accent-dark: #4f46e5;
-    --accent-glow: rgba(99, 102, 241, 0.3);
+    --accent: #6b7d2a;
+    --accent-light: #8fa83a;
+    --accent-hover: #7d9430;
+    --accent-dark: #4b5320;
+    --accent-glow: rgba(107, 125, 42, 0.35);
 
-    --success: #10b981;
-    --warning: #f59e0b;
-    --danger: #ef4444;
+    --success: #5cb85c;
+    --warning: #c9a825;
+    --danger: #c94040;
 
-    --gradient-main: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
-    --gradient-premium: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
-    --gradient-card: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%);
+    --gradient-main: linear-gradient(135deg, #4b5320 0%, #6b7d2a 50%, #8fa83a 100%);
+    --gradient-premium: linear-gradient(135deg, #8fa83a 0%, #4b5320 100%);
+    --gradient-card: linear-gradient(135deg, rgba(75, 83, 32, 0.12) 0%, rgba(107, 125, 42, 0.06) 100%);
+    --gradient-glow: radial-gradient(ellipse at 50% 0%, rgba(107, 125, 42, 0.15) 0%, transparent 70%);
 
-    --border: rgba(255, 255, 255, 0.08);
-    --border-focus: rgba(99, 102, 241, 0.5);
+    --border: rgba(107, 125, 42, 0.15);
+    --border-focus: rgba(143, 168, 58, 0.5);
 
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --radius-xl: 20px;
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 18px;
+    --radius-xl: 22px;
     --radius-full: 50%;
 
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-    --shadow-glow: 0 0 20px var(--accent-glow);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.6);
+    --shadow-glow: 0 0 25px var(--accent-glow);
 
     --nav-height: 72px;
     --header-height: 56px;
 
     --transition-fast: 0.15s ease;
-    --transition-normal: 0.25s ease;
-    --transition-slow: 0.4s ease;
+    --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* === Reset & Base === */
@@ -73,6 +76,19 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-tap-highlight-color: transparent;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    height: 250px;
+    background: radial-gradient(ellipse, rgba(107, 125, 42, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
 }
 
 .hidden { display: none !important; }
@@ -105,7 +121,7 @@ body {
 
 .shield-icon {
     font-size: 64px;
-    filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.5));
+    filter: drop-shadow(0 0 20px rgba(107, 125, 42, 0.5));
 }
 
 .loader-text {
@@ -288,7 +304,7 @@ body {
 .orb-2 {
     width: 100px;
     height: 100px;
-    background: #a855f7;
+    background: #8fa83a;
     bottom: -20px;
     left: -20px;
     animation-delay: 2s;
@@ -297,7 +313,7 @@ body {
 .orb-3 {
     width: 80px;
     height: 80px;
-    background: #6366f1;
+    background: #6b7d2a;
     top: 50%;
     left: 50%;
     animation-delay: 4s;
@@ -542,7 +558,7 @@ body {
 }
 
 .btn-outline:active {
-    background: rgba(99, 102, 241, 0.1);
+    background: rgba(107, 125, 42, 0.1);
 }
 
 .btn-premium {
@@ -609,8 +625,8 @@ body {
 
 .tariff-card.popular {
     border-color: var(--accent);
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.15);
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(139, 92, 246, 0.04) 100%);
+    box-shadow: 0 0 20px rgba(107, 125, 42, 0.15);
+    background: linear-gradient(135deg, rgba(107, 125, 42, 0.08) 0%, rgba(75, 83, 32, 0.04) 100%);
 }
 
 .tariff-card.premium {
@@ -641,7 +657,7 @@ body {
 }
 
 .premium-badge {
-    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    background: linear-gradient(135deg, #c9a825, #c94040);
 }
 
 .tariff-header {
@@ -938,8 +954,8 @@ body {
 }
 
 .modal-body .tip {
-    background: rgba(99, 102, 241, 0.08);
-    border: 1px solid rgba(99, 102, 241, 0.2);
+    background: rgba(75, 83, 32, 0.12);
+    border: 1px solid rgba(107, 125, 42, 0.25);
     border-radius: var(--radius-md);
     padding: 12px 14px;
     margin-top: 16px;
@@ -1086,11 +1102,11 @@ body {
 
 /* === Admin Panel === */
 .admin-nav-item.active {
-    color: #f59e0b !important;
+    color: #c9a825 !important;
 }
 
 .admin-nav-item.active::before {
-    background: #f59e0b !important;
+    background: #c9a825 !important;
 }
 
 .admin-stats {
@@ -1207,7 +1223,7 @@ body {
 }
 
 .friend-status.permanent-status {
-    background: rgba(99, 102, 241, 0.12);
+    background: rgba(107, 125, 42, 0.12);
     color: var(--accent-light);
 }
 
@@ -1336,7 +1352,7 @@ body {
 
 /* QR Button */
 .btn-qr {
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    background: linear-gradient(135deg, #6b7d2a, #7d9430);
     color: white;
     margin-top: 8px;
 }
@@ -1487,15 +1503,15 @@ body {
 }
 
 .promo-result.success {
-    background: rgba(52, 211, 153, 0.1);
-    color: #34d399;
-    border: 1px solid rgba(52, 211, 153, 0.3);
+    background: rgba(75, 83, 32, 0.15);
+    color: #8fa83a;
+    border: 1px solid rgba(107, 125, 42, 0.3);
 }
 
 .promo-result.error {
-    background: rgba(239, 68, 68, 0.1);
-    color: #ef4444;
-    border: 1px solid rgba(239, 68, 68, 0.3);
+    background: rgba(201, 64, 64, 0.1);
+    color: #c94040;
+    border: 1px solid rgba(201, 64, 64, 0.3);
 }
 
 .promo-result.loading {

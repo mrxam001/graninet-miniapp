@@ -466,7 +466,7 @@ function showSetup(device) {
 
     // Copy key button
     let html = '';
-    if (userData?.user?.sub_link) {
+    if (userData?.sub_link) {
         html += `
             <div class="setup-key-actions">
                 <button class="btn btn-primary btn-sm" onclick="copySub(); showToast('📋 Ссылка-подписка скопирована!')">
@@ -729,31 +729,52 @@ async function deleteFriend(name) {
 
 // === QR Code ===
 function showQRCode() {
-    if (!userData?.user?.sub_link) return;
+    if (!userData?.sub_link) {
+        showToast('❌ Нет ссылки подписки');
+        return;
+    }
 
     const modal = document.getElementById('qrModal');
     const container = document.getElementById('qrContainer');
     container.innerHTML = '';
 
+    const link = userData.sub_link;
+
     try {
-        const qr = qrcode(0, 'M');
-        qr.addData(userData.user.sub_link);
-        qr.make();
+        if (typeof qrcode === 'function') {
+            const qr = qrcode(0, 'M');
+            qr.addData(link);
+            qr.make();
 
-        const size = 8;
-        container.innerHTML = qr.createSvgTag(size, 0);
+            const size = 8;
+            container.innerHTML = qr.createSvgTag(size, 0);
 
-        // Style the SVG
-        const svg = container.querySelector('svg');
-        if (svg) {
-            svg.style.maxWidth = '260px';
-            svg.style.height = 'auto';
-            svg.style.borderRadius = '12px';
-            svg.style.background = '#fff';
-            svg.style.padding = '16px';
+            const svg = container.querySelector('svg');
+            if (svg) {
+                svg.style.maxWidth = '260px';
+                svg.style.height = 'auto';
+                svg.style.borderRadius = '12px';
+                svg.style.background = '#fff';
+                svg.style.padding = '16px';
+            }
+        } else {
+            // Fallback: use external QR API
+            const img = document.createElement('img');
+            img.src = `https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=${encodeURIComponent(link)}`;
+            img.style.maxWidth = '260px';
+            img.style.borderRadius = '12px';
+            img.alt = 'QR Code';
+            container.appendChild(img);
         }
     } catch (e) {
-        container.innerHTML = '<p style="color: var(--text-secondary)">Ошибка генерации QR</p>';
+        console.error('QR error:', e);
+        // Fallback: use external QR API
+        const img = document.createElement('img');
+        img.src = `https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=${encodeURIComponent(link)}`;
+        img.style.maxWidth = '260px';
+        img.style.borderRadius = '12px';
+        img.alt = 'QR Code';
+        container.appendChild(img);
     }
 
     modal.style.display = 'flex';
