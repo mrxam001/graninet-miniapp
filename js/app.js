@@ -198,6 +198,14 @@ function updateUI(user) {
             if (trialCard) trialCard.style.display = 'none';
         }
 
+        // Referral
+        if (user.referral_link) {
+            const refLinkBox = document.getElementById('refLinkBox');
+            if (refLinkBox) refLinkBox.style.display = '';
+            document.getElementById('refLink').textContent = user.referral_link;
+            document.getElementById('refCount').textContent = user.referral_count || 0;
+        }
+
     } else if (user && !user.active) {
         // === EXPIRED SUBSCRIPTION ===
         statusDot.className = 'status-dot expired';
@@ -758,5 +766,71 @@ function closeQR() {
 function closeQRModal(event) {
     if (event.target === event.currentTarget) {
         closeQR();
+    }
+}
+
+// === Referral ===
+function copyRefLink() {
+    const link = document.getElementById('refLink')?.textContent;
+    if (!link || link === '—') return;
+    navigator.clipboard.writeText(link).then(() => {
+        showToast('📋 Ссылка скопирована!');
+    }).catch(() => {
+        // Fallback
+        const ta = document.createElement('textarea');
+        ta.value = link;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast('📋 Ссылка скопирована!');
+    });
+}
+
+function shareRefLink() {
+    const link = document.getElementById('refLink')?.textContent;
+    if (!link || link === '—') return;
+    const text = `🛡 Попробуй ГРАНИ.НЕТ VPN! Быстрый и надёжный.\nРегистрируйся по моей ссылке и получи бонус:\n${link}`;
+    if (tg) {
+        tg.openTelegramLink(`https://t.me/share/url?url=${encodeURIComponent(link)}&text=${encodeURIComponent('🛡 Попробуй ГРАНИ.НЕТ VPN! Быстрый и надёжный.')}`);
+    } else if (navigator.share) {
+        navigator.share({ text });
+    } else {
+        copyRefLink();
+    }
+}
+
+// === Promo Code ===
+async function applyPromo() {
+    const input = document.getElementById('promoInput');
+    const resultDiv = document.getElementById('promoResult');
+    const code = input.value.trim();
+
+    if (!code) {
+        resultDiv.style.display = 'block';
+        resultDiv.className = 'promo-result error';
+        resultDiv.textContent = '❌ Введи промокод';
+        return;
+    }
+
+    resultDiv.style.display = 'block';
+    resultDiv.className = 'promo-result loading';
+    resultDiv.textContent = '⏳ Проверяю...';
+
+    const data = await apiRequest('/api/promo', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code })
+    });
+
+    if (data && data.success) {
+        resultDiv.className = 'promo-result success';
+        resultDiv.textContent = `✅ ${data.result.message}`;
+        input.value = '';
+        // Refresh profile to show updated expiry
+        setTimeout(() => loadProfile(), 1500);
+    } else {
+        resultDiv.className = 'promo-result error';
+        resultDiv.textContent = `❌ ${data?.error || 'Ошибка'}`;
     }
 }

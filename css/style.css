@@ -839,8 +839,9 @@ body {
     transform: translateX(0);
 }
 
-.modal-content {
+.modal > .modal-content {
     height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -1291,7 +1292,7 @@ body {
     padding: 20px;
 }
 
-.modal-content {
+.qr-modal-inner {
     max-width: 340px;
     width: 100%;
     padding: 24px;
@@ -1406,4 +1407,97 @@ body {
     font-weight: 700;
     color: var(--text-primary);
     margin: 16px 0 10px;
+}
+
+/* Referral Card */
+.referral-text {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+.referral-text strong {
+    color: var(--accent-light);
+}
+
+.referral-stats {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.referral-link-box {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    overflow-x: auto;
+}
+
+.referral-link {
+    font-size: 12px;
+    color: var(--accent-light);
+    word-break: break-all;
+    font-family: monospace;
+}
+
+.referral-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.referral-actions .btn {
+    flex: 1;
+}
+
+/* Promo Card */
+.promo-input-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.promo-input {
+    flex: 1;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+    color: var(--text-primary);
+    font-size: 15px;
+    font-family: inherit;
+    outline: none;
+    text-transform: uppercase;
+}
+
+.promo-input::placeholder {
+    color: var(--text-muted);
+    text-transform: none;
+}
+
+.promo-input:focus {
+    border-color: var(--accent);
+}
+
+.promo-result {
+    margin-top: 10px;
+    padding: 8px 12px;
+    border-radius: var(--radius-md);
+    font-size: 14px;
+}
+
+.promo-result.success {
+    background: rgba(52, 211, 153, 0.1);
+    color: #34d399;
+    border: 1px solid rgba(52, 211, 153, 0.3);
+}
+
+.promo-result.error {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.promo-result.loading {
+    color: var(--text-secondary);
 }

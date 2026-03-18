@@ -316,6 +316,34 @@
                         <button class="btn btn-primary" onclick="navigateTo('tariffs')">Выбрать тариф</button>
                     </div>
 
+                    <!-- Referral System -->
+                    <div class="section-title">🎁 Пригласи друга</div>
+                    <div class="info-card glass" id="referralCard">
+                        <div class="referral-text">
+                            Получи <strong>+7 дней</strong> VPN за каждого друга!
+                        </div>
+                        <div class="referral-stats">
+                            <span class="referral-count">👥 Приглашено: <strong id="refCount">0</strong></span>
+                        </div>
+                        <div class="referral-link-box" id="refLinkBox" style="display:none;">
+                            <div class="referral-link" id="refLink">—</div>
+                        </div>
+                        <div class="referral-actions">
+                            <button class="btn btn-sm btn-primary" onclick="copyRefLink()">📋 Скопировать ссылку</button>
+                            <button class="btn btn-sm btn-qr" onclick="shareRefLink()">📤 Поделиться</button>
+                        </div>
+                    </div>
+
+                    <!-- Promo Code -->
+                    <div class="section-title">🏷 Промокод</div>
+                    <div class="info-card glass" id="promoCard">
+                        <div class="promo-input-row">
+                            <input type="text" class="promo-input" id="promoInput" placeholder="Введи промокод" maxlength="20">
+                            <button class="btn btn-sm btn-primary" onclick="applyPromo()">Применить</button>
+                        </div>
+                        <div class="promo-result" id="promoResult" style="display:none;"></div>
+                    </div>
+
                     <!-- Support -->
                     <div class="section-title">Поддержка</div>
                     <button class="action-card full-width" onclick="openSupport()">
@@ -327,7 +355,7 @@
 
             <!-- QR Code Modal -->
             <div class="modal-overlay" id="qrModal" style="display:none;" onclick="closeQRModal(event)">
-                <div class="modal-content glass">
+                <div class="qr-modal-inner glass">
                     <div class="modal-header">
                         <h3>📷 QR-код подписки</h3>
                         <button class="modal-close" onclick="closeQR()">✕</button>
